@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Note;
+use App\Http\Controllers\NoteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,14 +14,6 @@ use App\Models\Note;
 |
 */
 
-Route::get('/', function () {
-    $title = "Notes";
-    $notes = Note::all();
+Route::get('/', [NoteController::class, 'index']);
 
-    return view('notes', ['title' => $title, 'notes' => $notes]);
-});
-
-Route::get('/notes/{note}', function ($id) {
-    $note = Note::find($id);
-    return view('note', $note);
-});
+Route::get('/notes/{note}', [NoteController::class, 'show']);
