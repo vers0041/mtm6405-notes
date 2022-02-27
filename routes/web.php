@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Note;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $title = "Notes";
-    return view('notes', ['title' => $title]);
+    $notes = Note::all();
+
+    return view('notes', ['title' => $title, 'notes' => $notes]);
 });
 
 Route::get('/notes/{note}', function ($id) {
-    $title = "Note {$id}";
-    $text = "This is note {$id}";
-    return view('note', ['title' => $title, 'text' => $text]);
+    $note = Note::find($id);
+    return view('note', $note);
 });
