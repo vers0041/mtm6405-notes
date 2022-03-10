@@ -26,4 +26,18 @@ class NoteController extends Controller
         $note = Note::find($id);
         return view('note', $note);
     }
+
+    public function create () {
+        $title = 'New Note';
+        return view('create', ['title' => $title]);
+    }
+
+    public function store () {
+        $note = new Note();
+        $note->title = request('title');
+        $note->text = request('text');
+        $note->save();
+
+        return redirect("/notes/{$note->id}");
+    }
 }
