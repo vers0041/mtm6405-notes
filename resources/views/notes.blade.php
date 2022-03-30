@@ -4,11 +4,11 @@
     <div class="col-9">
       <h1 class="display-4">{{ $title }}</h1>
     </div>
-    <div class="col-3">
-      <a href="/create" class="text-decoration-none">New Note</a>
+    <div class="col-3 text-end">
+      <a href="/create" class="text-decoration-none text-body">New</a>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col">
       <form class="form mb-3">

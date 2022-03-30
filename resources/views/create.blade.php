@@ -2,8 +2,8 @@
   <x-slot name="title">{{ $title }}</x-slot>
   <h1 class="display-4 my-5">{{ $title }}</h1>
   <div class="row">
-    <div class="col-12 col-md-8 col-lg-6">
-      <form method="post" action="/" class="form mb-3 d-flex flex-column">
+    <div class="col">
+      <form method="post" action="/" class="form mb-3 d-flex flex-column bg-light p-5">
         @csrf
 
         <label for="title" class="form-label">Title</label>

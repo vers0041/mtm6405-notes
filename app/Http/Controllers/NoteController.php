@@ -40,4 +40,26 @@ class NoteController extends Controller
 
         return redirect("/notes/{$note->id}");
     }
+
+    public function edit ($id) {
+        $title = 'Edit Note';
+        $note = Note::find($id);
+        return view('edit', ['title' => $title, 'note' => $note]);
+    }
+
+    public function update ($id) {
+        $note = Note::find($id);
+        $note->title = request('title');
+        $note->text = request('text');
+        $note->save();
+
+        return redirect("/notes/{$note->id}");
+    }
+
+    public function destroy ($id) {
+        $note = Note::find($id);
+        $note->delete();
+
+        return redirect('/');
+    }
 }
