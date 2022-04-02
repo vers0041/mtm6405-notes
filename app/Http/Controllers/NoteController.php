@@ -19,12 +19,14 @@ class NoteController extends Controller
             $notes = Note::all();
         }
 
-        return view('notes', ['title' => $title, 'notes' => $notes]);
+        // return view('notes', ['title' => $title, 'notes' => $notes]);
+        return response()->json($notes, 200);
     }
 
     public function show ($id) {
         $note = Note::find($id);
-        return view('note', $note);
+        // return view('note', $note);
+        return response()->json($note, 200);
     }
 
     public function create () {
@@ -38,7 +40,8 @@ class NoteController extends Controller
         $note->text = request('text');
         $note->save();
 
-        return redirect("/notes/{$note->id}");
+        // return redirect("/notes/{$note->id}");
+        return response()->json($note, 201);
     }
 
     public function edit ($id) {
@@ -53,13 +56,15 @@ class NoteController extends Controller
         $note->text = request('text');
         $note->save();
 
-        return redirect("/notes/{$note->id}");
+        // return redirect("/notes/{$note->id}");
+        return response()->json($note, 200);
     }
 
     public function destroy ($id) {
         $note = Note::find($id);
         $note->delete();
 
-        return redirect('/');
+        // return redirect('/');
+        return response()->json($note, 200);
     }
 }
