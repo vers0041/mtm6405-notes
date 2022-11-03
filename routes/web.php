@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/{name?}', function ($name = 'Friend') {
+//     return "Hello {$name}!";
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('notes');
+});
+
+Route::get('/notes/{note}', function ($id) {
+    $title = "Note {$id}";
+    $text = "This is note {$id}";
+    return view('note', ["title" => $title, "text" => $text]);
 });
